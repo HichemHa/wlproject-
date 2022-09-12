@@ -71,9 +71,25 @@ $ npm run test:cov
 Now the logging will create an Token to have access for the rest of routes
 {POST} localhost:8888/auth/login
 #
-When is Authorized and want to create a note NB you have to define in the Header of the request your token like
-![image](https://user-images.githubusercontent.com/76098546/189620569-97480674-dd37-4a70-b9db-6ad177e4403b.png)
+When is Authorized and want to create a note NB you have to define in the Header of the request your token like the picture 
+NB:the note will automatically created for the user of the Token also he can fix who can read only his not or give him the right to edit.
 {POST} http://localhost:8888/notes/ 
+
+![image](https://user-images.githubusercontent.com/76098546/189620569-97480674-dd37-4a70-b9db-6ad177e4403b.png)
+#
+For the update
+{PATCH} http://localhost:8888/notes/yournoteid
+#
+Finely to get notes of user (dont forget the header / Authorization) 
+{GET} http://localhost:8888/notes/
+#
+#Now when user want to read/edit a note of another user
+READ: 
+{GET} http://localhost:8888/notes/emailofusertargert/idofthenote
+#
+EDIT: 
+{PATCH} http://localhost:8888/notes/emailofusertargert/idofthenote
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
