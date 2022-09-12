@@ -1,5 +1,11 @@
-
-import { Controller, Get, Request, Post,Body, UseGuards } from '@nestjs/common';
+import {
+  Controller,
+  Get,
+  Request,
+  Post,
+  Body,
+  UseGuards,
+} from '@nestjs/common';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { LocalAuthGuard } from './auth/local-auth.guard';
 import { AuthService } from './auth/auth.service';
@@ -11,30 +17,25 @@ export class AppController {
   constructor(
     private authService: AuthService,
     private readonly service: UsersService,
-    ) {}
+  ) {}
 
-  
   @Post('auth/login')
   async login(@Request() req) {
-    
-    return this.authService.login(req.body.email,req.body.password);
+    return this.authService.login(req.body.email, req.body.password);
   }
 
   @UseGuards(JwtAuthGuard)
   @Get('profile')
-  getProfile(@Request() req) {
-    return req.email;
+  getProfile(@Request() req: any) {
+    return req.user.email;
   }
   @Post('user/create')
   async create(@Body() createUserDto: CreateUserDto) {
     return await this.service.create(createUserDto);
   }
+
   @Get('user')
-  async index() {
-    // return {
-    //     data: await this.service.findAll(),
-    //     msg:'data is here'
-    // };
+  async index(@Request() req) {
     try {
       let x = await this.service.findAll();
       return {
@@ -42,11 +43,15 @@ export class AppController {
         msg: 'data is here',
       };
     } catch (error) {
-        return {
-            data: error,
-            msg: 'datq problem',
-          };
+      return {
+        data: error,
+        msg: 'datq problem',
+      };
     }
   }
 
+  @Get()
+  async getHomePage() {
+    return '<h1 style="text-align:center">Hello! this applicaiton is developped by Hichem Hanafi</h1>';
+  }
 }
