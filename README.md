@@ -82,7 +82,7 @@ For the update
 #
 Finely to get notes of user (dont forget the header / Authorization) 
 {GET} http://localhost:8888/notes/
-#
+
 #Now when user want to read/edit a note of another user
 READ: 
 {GET} http://localhost:8888/notes/emailofusertargert/idofthenote
