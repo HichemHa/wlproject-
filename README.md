@@ -32,6 +32,13 @@
 $ npm install
 ```
 
+## create a file .env 
+
+```bash
+$ MONGO_URI="..."
+$ secret="Your_Srecret_key"
+```
+
 ## Running the app
 
 ```bash
