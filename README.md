@@ -65,11 +65,13 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 ## Routing 
-# To start your test you have to create first an account with this route:
+ To start your test you have to create first an account with this route:
 {POST} http://localhost:8888/user/create
-# Now the logging will create an Token to have access for the rest of routes
+#
+Now the logging will create an Token to have access for the rest of routes
 {POST} localhost:8888/auth/login
-# When is Authirized and want to create a note NB you have to define in the Header of the request your token like
+#
+When is Authorized and want to create a note NB you have to define in the Header of the request your token like
 ![image](https://user-images.githubusercontent.com/76098546/189620569-97480674-dd37-4a70-b9db-6ad177e4403b.png)
 {POST} http://localhost:8888/notes/ 
 ## Support
